@@ -24,7 +24,8 @@ public class ConsoleView implements View {
         int point = 0;
         while (work) {
             System.out.println("Выбрите действие:\n1.Инициация изначального дерева\n" + 
-                        "2.Вывод текущего дерева на консоль\n" + "3.Выход");
+                        "2.Вывод текущего дерева на консоль\n" + "3.Добавление человека в дерево\n" + 
+                        "4.Удаление человека из дерева\n" + "5.Выход");
             point = scan.nextInt();
             switch (point) {
                 case (1):
@@ -34,6 +35,12 @@ public class ConsoleView implements View {
                     printTree();
                     break;
                 case (3):
+                    addToTree();
+                    break;
+                case (4):
+                    delFromTree();
+                    break;
+                case (5):
                     exit();
                     break;
                 default:
@@ -42,6 +49,7 @@ public class ConsoleView implements View {
             }
         }
     }
+    
     private void initialTree() {
         presenter.initTree();
         System.out.println("Дерево инициализировано, для просмотра дерева выберите пункт 2.");
@@ -53,6 +61,28 @@ public class ConsoleView implements View {
         for (Person pers : presenter.takeTree()) {
             System.out.println(pers);
         }
+    }
+    private void addToTree() {
+        System.out.println("Выберите пол добавляемого человека: 1 - мужской, 2 - женский => ");
+        int g = scan.nextInt();
+        System.out.print("Введите фамилию человека => ");
+        scan.nextLine();
+        String sn = scan.nextLine();
+        System.out.print("Введите имя человека => ");
+        // scan.nextLine();
+        String fn = scan.nextLine();
+        System.out.print("Введите год рождения человека => ");
+        int yb = scan.nextInt();
+        presenter.addPersonToTree(g, sn, fn, yb);
+        System.out.println("Человек добавлен.");
+    }
+    private void delFromTree() {
+        System.out.print("Введите фамилию человека, которого хотим удалить => ");
+        scan.nextLine();
+        String sn = scan.nextLine();
+        System.out.print("Введите год рождения человека => ");
+        int yb = scan.nextInt();
+        presenter.delPersonFromTree(sn, yb);
     }
     private void exit(){
         System.out.println("Завершение работы.");

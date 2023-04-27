@@ -8,7 +8,6 @@ public class Person implements Serializable {
     private String lastName;
     private String firstName;
     private int yearBithday;
-    
     private Gender gender;
     private Person father;
     private Person mother;
@@ -29,6 +28,8 @@ public class Person implements Serializable {
     public int getYearBithday() { return yearBithday; }
     public Person getFather() { return father; }
     public Person getMother() { return mother; }
+    public void setGender(Gender gender) { this.gender = gender; }
+    
     public String putGender() {
         if (gender == Gender.Male) return "пол мужской";
         else return "пол женский"; 

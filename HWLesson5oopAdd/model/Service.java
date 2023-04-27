@@ -2,29 +2,44 @@ package HomeworksAdd.HWOOPadd.HWLesson5oopAdd.model;
 
 public class Service {
     FamilyTree ft;
-    // FileHandler fh;
     private String path;
 
     public Service(String path) {
         this.path = path;
         ft = new FamilyTree();
-        // fh = new FileHandler();
     }
 
     public void saveToFile() {
         sortByYearBirsday();
-        FileHandler fh = new FileHandler();
-        fh.putToFile(ft, path);
+        for (Person person : ft) {
+            FileHandler fh = new FileHandler();
+            fh.putToFile(person, path);
+        }
     }
     public FamilyTree takeFromFile() {
         FileHandler fh = new FileHandler();
-        return (FamilyTree)fh.loadFromFile(path);
+        Person person = (Person) fh.loadFromFile(path);
+        ft.addToFamilyTree(person);
+        return ft;
     }
     public void sortByYearBirsday() {
         ft.getFamilyTree().sort(new PersonComparatorByYearBirsday());
     }
     public void sortByName() {
         ft.getFamilyTree().sort(new PersonComparatorByName());
+    }
+    public void addPersToTree(int g, String sn, String fn, int yb) {
+        Person person = new Person(sn, fn, yb, null, null, null);
+        if (g == 1) person.setGender(Gender.Male);
+        else person.setGender(Gender.Female);
+        FileHandler fh = new FileHandler();
+        fh.putToFile(person, path);
+    }
+    public void delPersFromTree(String sn, int yb) {
+        // Person person = new Person(sn, sn, 0, null, null, null);
+        for (Person pers : ft) {
+            if (pers.getLastName().equals(sn) && (pers.getYearBithday() == yb)) ft.getFamilyTree().remove(pers);
+        }
     }
     public FamilyTree newFamilyTree() {
         Person person1 = new Person("Иванов", "Петр", 1962, Gender.Male, null, null);
