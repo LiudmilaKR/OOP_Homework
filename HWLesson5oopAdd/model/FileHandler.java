@@ -24,6 +24,7 @@ public class FileHandler implements Writable {
         try {
             ObjectInputStream ois = new ObjectInputStream(new FileInputStream(Path));
             // Object ft = new Object(); ???
+            // if ()
             Object ft = ois.readObject();
             ois.close();
             return ft;

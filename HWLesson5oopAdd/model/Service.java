@@ -2,20 +2,29 @@ package HomeworksAdd.HWOOPadd.HWLesson5oopAdd.model;
 
 public class Service {
     FamilyTree ft;
-    FileHandler fh;
+    // FileHandler fh;
     private String path;
 
     public Service(String path) {
         this.path = path;
         ft = new FamilyTree();
-        fh = new FileHandler();
+        // fh = new FileHandler();
     }
 
     public void saveToFile() {
+        sortByYearBirsday();
+        FileHandler fh = new FileHandler();
         fh.putToFile(ft, path);
     }
     public FamilyTree takeFromFile() {
+        FileHandler fh = new FileHandler();
         return (FamilyTree)fh.loadFromFile(path);
+    }
+    public void sortByYearBirsday() {
+        ft.getFamilyTree().sort(new PersonComparatorByYearBirsday());
+    }
+    public void sortByName() {
+        ft.getFamilyTree().sort(new PersonComparatorByName());
     }
     public FamilyTree newFamilyTree() {
         Person person1 = new Person("Иванов", "Петр", 1962, Gender.Male, null, null);

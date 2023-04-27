@@ -8,6 +8,7 @@ public class Person implements Serializable {
     private String lastName;
     private String firstName;
     private int yearBithday;
+    
     private Gender gender;
     private Person father;
     private Person mother;
@@ -23,6 +24,9 @@ public class Person implements Serializable {
         this.mother = mother;
         this.children = new ArrayList<>();
     }
+    public String getLastName() { return lastName; }
+    public String getFirstName() { return firstName; }
+    public int getYearBithday() { return yearBithday; }
     public Person getFather() { return father; }
     public Person getMother() { return mother; }
     public String putGender() {
@@ -82,11 +86,13 @@ public class Person implements Serializable {
         return sb.toString();
         
     }
-    // // @Override
-    // public boolean equals(Object obj) {
-    //     if (this == obj) return true;
-    //     if (!(obj instanceof Person)) return false;
-    //     Person pers = (Person) obj;
-    //     return pers.getLastName().equals(getLastName());
-    // }
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (!(obj instanceof Person)) return false;
+        Person pers = (Person) obj;
+        return pers.getLastName().equals(getLastName()) && 
+            pers.getFirstName().equals(getFirstName()) && 
+            (pers.getYearBithday() == getYearBithday());
+    }
 }

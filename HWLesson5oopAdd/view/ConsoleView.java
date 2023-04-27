@@ -2,6 +2,7 @@ package HomeworksAdd.HWOOPadd.HWLesson5oopAdd.view;
 
 import java.util.Scanner;
 
+import HomeworksAdd.HWOOPadd.HWLesson5oopAdd.model.Person;
 import HomeworksAdd.HWOOPadd.HWLesson5oopAdd.model.Service;
 import HomeworksAdd.HWOOPadd.HWLesson5oopAdd.presenter.Presenter;
 
@@ -31,9 +32,6 @@ public class ConsoleView implements View {
                 break;
                 case (2):
                     printTree();
-                    // System.out.println("Сортировка по фамилии и имени.");
-                    // this.presenter.printTreeSorted();
-                    // System.out.println("Сортировка по дате рождения.");
                     break;
                 case (3):
                     exit();
@@ -50,7 +48,11 @@ public class ConsoleView implements View {
         System.out.println();
     }
     private void printTree() {
-        System.out.println(presenter.takeTree());
+        // System.out.println(presenter.takeTree());
+        System.out.println("Текущее дерево =>");
+        for (Person pers : presenter.takeTree()) {
+            System.out.println(pers);
+        }
     }
     private void exit(){
         System.out.println("Завершение работы.");
