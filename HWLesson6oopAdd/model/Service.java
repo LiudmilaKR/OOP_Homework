@@ -40,12 +40,11 @@ public class Service {
         for (Person pers : ft) {
             if (pers.getId() == i) ft.removeFromFamilyTree(pers);
         }
-        System.out.println(ft);
         saveToFile(ft);
     }
     public FamilyTree newFamilyTree() {
         Person person1 = new Person(91, "Иванов", "Петр", 1962, Gender.Male, null, null);
-        Person person2 = new Person(92,"Иванова", "Наталья", 1965, Gender.Female, null, null);
+        Person person2 = new Person(92, "Иванова", "Наталья", 1965, Gender.Female, null, null);
         Person person3 = new Person(93, "Иванов", "Егор", 1986, Gender.Male, person1, person2);
         Person person4 = new Person(94, "Иванов", "Сергей", 1990, Gender.Male, person1, person2);
         Person person7 = new Person(95, "Григорьев", "Петр", 1968, Gender.Male, null, null);
